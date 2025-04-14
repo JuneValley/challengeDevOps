@@ -1,8 +1,0 @@
-package com.challengeDevOps.challengeDevOps.models;
-
-import jakarta.persistence.Entity;
-
-@Entity
-public class Response {
-	
-}
