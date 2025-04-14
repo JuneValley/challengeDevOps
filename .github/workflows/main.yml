@@ -1,0 +1,30 @@
+#name of the CI test
+name: Java CI with Maven
+
+#when a push or a pull request is made on master
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+#building the app
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      #checkout the repository
+      - uses: actions/checkout@v4
+
+      #set up JDK 21 and maven
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      #run tests
+      - name: Build with Maven
+      #run app
+        run: mvn -B package --file ./challengeDevOps/pom.xml
