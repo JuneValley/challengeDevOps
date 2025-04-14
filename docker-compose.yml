@@ -1,0 +1,38 @@
+services:
+
+  mysqldb:
+    image: "mysql:8.0"
+    ports:
+      - 3306:3306
+    volumes: 
+      - crazy-mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=cartasso
+      - MYSQL_DATABASE=challengedevops
+      - MYSQL_USER=cartasso
+      - MYSQL_PASSWORD=cartasso
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  springboot:
+    depends_on:
+      - mysqldb
+    build: ./challengeDevOps
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb/challengedevops?serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: cartasso
+      SPRING_DATASOURCE_PASSWORD: cartasso
+    healthcheck: 
+      test: "curl http://localhost:8080/" 
+      interval: 5s  
+      timeout: 5s 
+      retries: 5 
+      start_period: 5s
+
+volumes:
+  crazy-mysql-data:

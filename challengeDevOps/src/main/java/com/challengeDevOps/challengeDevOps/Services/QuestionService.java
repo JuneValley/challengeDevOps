@@ -1,0 +1,16 @@
+package com.challengeDevOps.challengeDevOps.Services;
+
+import com.challengeDevOps.challengeDevOps.Repositories.QuestionRepository;
+import com.challengeDevOps.challengeDevOps.models.Question;
+
+public class QuestionService {
+	private final QuestionRepository questionRepository;
+
+	public QuestionService(QuestionRepository questionRepository) {
+		this.questionRepository = questionRepository;
+	}
+	
+	public Question saveQuestion(Question question) {
+        return questionRepository.save(question);
+    }
+}
