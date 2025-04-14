@@ -1,0 +1,5 @@
+package com.challengeDevOps.challengeDevOps.Services;
+
+public class QuizService {
+
+}
