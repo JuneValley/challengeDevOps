@@ -1,7 +1,0 @@
-INDEX VERSION 1.4+D:\challengeDevOps\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-4189283352.index
-4035149947.index
-2105625529.index
-3339180156.index
-441606692.index
-1983541007.index
